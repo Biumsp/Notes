@@ -276,3 +276,6 @@ Other log options:
 
 git branch -M newname
 	renames the current branch to 'newname'
+
+git config --global init.defaultBranch newname
+	sets the default name of the master branch to 'newname'

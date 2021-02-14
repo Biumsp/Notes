@@ -1,3 +1,6 @@
+GIT short guide
+https://rogerdudler.github.io/git-guide/
+
 + Right click on a local repo and select 'Git Bash Here'
 	This opens a command line with the path to your directory already set
 

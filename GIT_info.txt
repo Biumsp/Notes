@@ -1,0 +1,278 @@
++ Right click on a local repo and select 'Git Bash Here'
+	This opens a command line with the path to your directory already set
+
++ Type in the command line 'git init'
+	This creates a .git hidden folder in your repo, that contains all the files that git needs to control this repo.
+	From now on this particular folder is controlled.
+
++ At the moment however no files are being controlled: to add a file to the git repository you just created use git add filename.extension
+
++ You can add a single file, a lis of files, all files with a certain extension or all files with all extensions
+
++ The added files get staged for commit. If a file is modified it gets off the stage. 
+  To put it back on stage you have to add it again.
+
++ To create a snapshot of the current situation in your repo, you have to commit the files.
+  When you d it, a sort of checkpoint is created. And it is registered who created it and what was changed. With additional
+  comments you have to add when you commit. You commit through the git commit command.
+  You can just use the git commit command, which opens an editor where you have to type your comments to the commit,
+  or you can do it with the additional option -m, which allows you to add the comments right in line with the git commit command itself.
+
++ Remember that you don't want to commit every change you make.
+  You just want to commit when your changes reach a state that you'd prefer to save.
+
++ You can create a list of files and directories you don't want to track. To do so you need 
+  to create the .gitignore file and write in it the files and directories to ignore.
+
++ Branching: VERY IMPORTANT.
+  Branching allows to create new work flows, new branches starting from the master branch. 
+  we create  branch using 'git branch nameofthebranch'
+  When you are in a branch you can create new files, new folders, modify the files, add stuff.. and none of this
+  will influence the other branches. the main branch is called 'master'.
+
++ Branches can be merged to the master branch, to inclued the changes you developed.
+
+
+IMPORTANT COMMANDS
+touch name.extention
+	creates the file name.extention in the current folder
+
+clear 
+	clear the command window
+
+git --version 
+	returns the version of git you have installed
+
+git init 
+	initializes the folder as a git repository	
+
+git status 
+	shows the status of the files: which are in the stage area,
+	which have to be committed, which have to be added (i.e. the untracked files) 
+
+git config --global user.name 'name'
+	change the global configurations and modify your name
+
+git config --global user.email 'email@email.com'
+	change the global configurations and modify your name
+
+git config 
+	other options are:
+	- user.name
+	- user.email
+	- author.name
+	- author.email
+	- committer.name
+	- committer.email
+
+git config --global credential.helper store
+	stores the GitHub credentials.
+
+git add namefile.extension
+	adds a file from the folder to the git repository you are working in
+
+git add namefile1.extension namefile2.extension namefile3.extension
+	adds a list of files from the folder to the git repository you are working in
+
+git add *.extension 
+	adds all files from the folder with this extension to the repository you are working in
+
+git add .
+	adds all files from the folder to the repository you are working in
+
+git rm namefile.extension
+	removes the file from the stage 
+
+git rm namefile1.extension namefile2.extension namefile3.extension
+	removes the list of files from the stage
+
+git rm *.extension 
+	removes all files with this extension from the stage
+
+git rm .
+	removes all files from the stage
+
+git rm [] --cached
+	whie git rm removes the files, the option --cached
+	leaves them on the disk: it just unstages them.
+	[] is any of the commands listed for git rm.
+
+git commit 
+	first step to commit your files. An editor is opened.
+
+	If this editor is opened in a new window follow these instructions:
+	- press 'i'
+		You have to press 'i' to activate the insert mode.
+	- Type your comment
+		Once in insert mode you can type your comments about the commit. 
+		Comments are mandatory to submit the commit.
+		(In this window a # starts an unread comment).
+	- press 'esc'
+		Once you typed the comment you have to press 'esc' to leave the insert mode.
+	- type ':wq' and press enter
+		this submits the commit
+
+	if the file is opened in a text editor, follow these commands:
+	- Type your comment 
+		Comments are mandatory to submit the commit.
+		(In this window a # starts an unread comment).
+	- save and close the file from the text editor
+		Once you typed the comment just save and close the file.
+
+git commit -m 'my comment'
+	an option of the git commit command that skips the editing stage and just let you add 
+	your comments from the command line.
+
+git commit -a -m 'my comment'
+	-a is an additional option that lets you skip the git add command. 
+	it adds everything and then commits.
+
+touch .gitignore 
+	creates the gitignore file. This file will contain the list of all files we don't want to
+	track. Those files are not added to the stage even if we use the 'git add .' command.
+	To add a file you just type its name in the gitignore file.
+	To not track a whole directory you write '/directoryname' in the gitignore file.
+	remember that any file in a subfolder must have the relative path right before its name.
+	Changes added to a branch have to be added and committed.
+
+git branch nameofthebranch
+	creates a new branch, starting from the current one
+
+git checkout nameofthebranch
+	this switches to the nameofthebranch branch. You use it to start working in that branch.
+
+git merge nameofthebranch
+	once we completed our changes in the branched project, if we are sure they work, 
+	we can merge them to the master branch. 
+	You run this command from the master, to merge the nameofthebranch branch to the mater.
+	This opens an editor where to add comments about this merge.
+
+	If this editor is opened in a new window follow these instructions:
+	- press 'i'
+		You have to press 'i' to activate the insert mode.
+	- Type your comment
+		Once in insert mode you can type your comments about the merge.
+		Comments are mandatory to submit the merge.
+		(In this window a # starts an unread comment).
+	- press 'esc'
+		Once you typed the comment you have to press 'esc' to leave the insert mode.
+	- type ':wq' and press enter
+		this submits the merge
+
+	if the file is opened in a text editor, follow these commands:
+	- Type your comment 
+		Comments are mandatory to submit the merge.
+		(In this window a # starts an unread comment).
+	- save and close the file from the text editor
+		Once you typed the comment just save and close the file.
+
+git merge nameofthebranch -m 'comments about the branch'
+	an option of the git merge command that skips the editing stage and just let you add 
+	your comments from the command line.
+
+git remote 
+	lists the current remote (i.e. online) repositories 
+
+git remote add nameofremoterepo urltoremoterepo
+	adds the remote repo to le list of remote repos. It is mandatory in order to push the local repo 
+	to the nameoftheremoterepo repo
+
+git remote rename oldname newname
+	renames the rmote repo from oldname to newname
+
+git push --set-upstream origin master
+	the first time you push you have to add 
+
+git push 
+	pushes your committed changes to the remote repo (es. on GitHub)
+
+git clone  linktotheremoterepo
+	clones the remote repo connected to the link and creates a new local folder on your device.
+
+git pull 
+	updates the changes to the repo, downloading them from the online repo.
+
+git branch -v 
+	shows the last commits of every branch
+
+git mv old_name.old_extension new_name.new_extension
+	renames the file old_name.old_extension to new_name.new_extension
+
+git log 
+	shows th list of commits, with date, hash, author, version...
+
+git log -p
+	Show the patch introduced with each commit.
+
+git log --stat
+	Show statistics for files modified in each commit.
+
+git log --graph
+	Display an ASCII graph of the branch and merge history beside the log output.
+
+git log --pretty=option
+	Show commits in an alternate format, where 'option' can be:
+	- oneline
+	- short
+	- full
+	- fuller
+	- format:
+		this last option lets you choose the output format. 
+		after 'format:' you specify the info you want to have displayed. 
+		Avaliable info are:
+		- %H
+			Commit hash
+		- %h
+			Abbreviated commit hash
+		- %T
+			Tree hash
+		- %t
+			Abbreviated tree hash
+		- %P
+			Parent hashes
+		- %p
+			Abbreviated parent hashes
+		- %an
+			Author name
+		- %ae
+			Author e-mail
+		- %ad
+			Author date (format respects the –date= option)
+		- %ar
+			Author date, relative
+		- %s
+			Subject
+
+		These info have to be submitted as a string like this: "%h - %an, %ae: %s"
+		Where everything is not an info (" - ";", "; ": ") is just printed as it is.
+
+	As usual, more than one option can be included.
+
+Other log options:
+	-(n)
+		Show only the last n commits
+
+	--since, --after
+		Limit the commits to those made after the specified date.
+
+	--until, --before
+		Limit the commits to those made before the specified date.
+
+	--author
+		Only show commits in which the author entry matches the specified string.
+
+	--committer
+		Only show commits in which the committer entry matches the specified string.
+
+	--grep
+		Only show commits with a commit message containing the string
+
+	-S
+		Only show commits adding or removing code matching the string
+
+	More info and explainations here
+	https://git-scm.com/book/it/v2/Git-Basics-Viewing-the-Commit-History
+
+
+git branch -M newname
+	renames the current branch to 'newname'

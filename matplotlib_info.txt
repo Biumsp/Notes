@@ -1,0 +1,179 @@
+from matplotlib import pyplot as plt
+import numpy as np
+
+# This shows us the styles we can use
+print(plt.style.available)
+
+# To use one of them we can say
+plt.style.use("NameOfTheStyle')
+
+# This, instead, uses a comics style (it is a method tough)
+plt.xkcd()
+
+# Every style has a default line and colors and bla bla.. 
+# So, if you don't add yours they will change as you change the style
+
+ 
+
+# Create the lists to plot
+x = [1, 2, 3, 4, 5]
+y = [1, 4, 9, 16, 25]
+
+# Create the "line" in the plot (it is actually added to the plot,
+# so if two lines are overlapping, the last added will be above the first)
+plt.plot(x, y)
+
+# You can pass arguments to the plot method:
+color = 'letter'
+# Where the letter comes from the official documentation. 
+# Oherwise you can use hex-colors (you can search them online)
+# An hex color is written like this 
+'#abcdef'
+# Where the first two digits are the value of red in hexadecimal,
+# the next two the value of green and the last that of blue
+
+linestyle = '-' # This is the default continous line
+#or you have --, -., ., : (not sure)
+
+# You can add the labels that will show up when you create the legend:
+label = 'anything'
+
+# Change the width of the line:
+linewidth = 3 # (default = 1)
+
+# Add a marker
+marker = '.' or 'o' or others in the docs
+
+# You add x and y labels wth:
+plt.xlabel('MyXLabel')
+plt.ylabel('MyYLabel')
+
+ou add a title like this:
+plt.title('mytitle')
+
+then you create the legend like this:
+plt.legend()
+
+# This adds a grid:
+plt.grid(True)
+
+# If you have visualization problems you can add
+plt.tight_layout()
+
+# This saves as a png
+plt.savefig('NameIWant')
+# Where NameIWant can be just th name or the full path 
+
+
+# You show the plot by adding
+plt.show()
+
+
+
+
+# A bar plot works the same, you just use plt.bar(....)
+# Instead of plt.plot(---)
+# If you use both for different data sets you get both lines and bars
+
+# BUT if you use bar for different series they will be overlapping, not side by side.
+# To put them side by side you have to create a numpy range from the list of x indexes
+# (It's like a list of integers counting the different x values)
+# Es: 
+x_indexes = np.arange(len(x))
+
+then you use the x_indexes when you call plt.bar instead of passing x
+but to the first instance we subtract a w value:
+plt.bar(x_indexes-w, y, ....)
+
+to the second, nothing, to the third we add it.
+Then we say, in all of them, width = w, to set the width of the bars to w.
+This shifts them
+
+then you to fix the x axis:
+plt.xticks(ticks = x_indexes, labels = x)
+
+
+
+
+To load files from external sources.
+to load from csv you can use the standard library:
+with open('data.csv') as csv_file: # This creates a dictionary from the csv file
+	csv_reader = csv.DictReader(csv_file) # This is an iterator
+	
+	row = next(csv_reader) # first line
+	
+
+
+# A csv 
+
+
+from collections import Counter
+c = Counter(MyList) # This creates a counter object with as keys the different elements and with values the number of occurrences
+if we update the counter, like this:
+c.update(MySecondList) 
+This will also update the object, counting
+
+
+SO for ex
+with open('data.csv') as csv_file: # This creates a dictionary from the csv file
+	csv_reader = csv.DictReader(csv_file) # This is an iterator
+	
+	c = Counter()
+	for row in csv_reader:
+		c.update(row['Key'].split(';'))
+
+This is for ex if we have a csv like this
+ID, languages spoken
+1, french; italian, spanish
+2, english; italian
+3, bla; blabla
+
+
+a counter has a method that returns the n first most common elements:
+c.most_common(n)s
+It returns a list of tuples (Key, occurrences)
+
+# When we have a lot of items we could want to ise  an horizontal bar plot.
+plt.barh(x, y) (still wants the independent variable first)
+But the labels have to be switched:
+plt.xlabel(ThisWasTheYlabel)
+
+using pandas to load:
+import pandas as pd
+
+data = pd.read_csv('data.csv')
+ids = data['id']
+languages = data[?KeyLang']
+
+and then we just loop and count as before, but in languages
+
+
+# PIE CHARTS
+slices = [30, 40, 20]
+labels = ["FirstOne", "SecondOne", "ThirdOne"]
+
+plt.pie(slices, labels = labels, wedgeprops = {'edgecolor' : 'black'})
+
+wedgeprops is to set optional stuff, for example the edge color.
+must be a dictionary.
+The custumizations you can chose can be found in the docs:
+search matplotlib wedge
+
+you can also specify colors for the slices passing another argument
+colors = ['blue', 'red', 'yellow']
+(you can also use hex colors)
+plt.pi(stuff, colors = colors)
+
+(you can also let the style you chose (or the default style) to set the colors)
+ To explode some slices you add a list of floats that 
+tell us the fraction of the radius you want to explode that particular slice
+explode = [0, 0, 0.2]
+plt.pie(stuff, explode = explode)
+you can also add a shadpw to the plot 
+plt.pie(stuff, shadow = True)
+
+# You can also set the angle of the first slice with respect to the vertical as
+plt.pie(stuff, startangle = somenumber)
+
+You can chose to swow the percentage of the slices adding
+autopct = '%1.1f%%'

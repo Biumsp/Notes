@@ -282,3 +282,25 @@ git branch -M newname
 
 git config --global init.defaultBranch newname
 	sets the default name of the master branch to 'newname'
+
+git stash 
+	removes local changes with respect to the remote repo (useful when you are rying to pull but git throws an error)
+
+% ------------------------------------------------------------------------------------------------------------------------------------
+% GIT large file storage (Just follow these steps from installation to usage)
+% ------------------------------------------------------------------------------------------------------------------------------------
+
+git lfs install
+	istalling lfs (you just need to do it once for account)
+
+git lfs track "stufftotrack"
+	begin tracking stufftotrack with lfs. Where stufftotrack can be a file (with relative path of course) or a filetipe (es. git lfs track "*.txt")
+
+git add .gitattributes
+	the previous commands modify the .gitattributes, so you need to add the file. You could also add all.
+
+Then you just commit and push 
+
+% ------------------------------------------------------------------------------------------------------------------------------------
+% 
+% ------------------------------------------------------------------------------------------------------------------------------------

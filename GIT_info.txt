@@ -183,11 +183,18 @@ git remote add nameofremoterepo urltoremoterepo
 git remote rename oldname newname
 	renames the rmote repo from oldname to newname
 
+git remote set-url name newurl
+	changes the url of the remote repo named 'name' to 'newurl'
+
 git push --set-upstream origin master
-	the first time you push you have to add 
+	the first time you push you have to add '--set-upstream origin master'
 
 git push 
 	pushes your committed changes to the remote repo (es. on GitHub)
+
+git config remote.origin.push HEAD
+	possible solution to the error 
+	'fatal: The current branch main has multiple upstream branches, refusing to push.'
 
 git clone  linktotheremoterepo
 	clones the remote repo connected to the link and creates a new local folder on your device.

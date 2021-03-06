@@ -147,7 +147,7 @@ git checkout nameofthebranch
 git merge nameofthebranch
 	once we completed our changes in the branched project, if we are sure they work, 
 	we can merge them to the master branch. 
-	You run this command from the master, to merge the nameofthebranch branch to the mater.
+	You run this command from the master, to merge the nameofthebranch branch to the master.
 	This opens an editor where to add comments about this merge.
 
 	If this editor is opened in a new window follow these instructions:
@@ -172,6 +172,12 @@ git merge nameofthebranch
 git merge nameofthebranch -m 'comments about the branch'
 	an option of the git merge command that skips the editing stage and just let you add 
 	your comments from the command line.
+
+git branch -d nameofbranch
+	deletes locally the nameofbranch branch (only if it has already been committed and pushed)
+
+git push origin --delete nameofbranch
+	deletes the remote copy of the nameofbranch branch
 
 git remote 
 	lists the current remote (i.e. online) repositories 
